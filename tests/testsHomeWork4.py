@@ -5,6 +5,10 @@ import logging
 
 @pytest.fixture
 def get_date():
+    """
+    fixture for getting date
+    :return: date or None
+    """
     try:
         return Date(22, 4, 2014)
     except:
@@ -13,6 +17,11 @@ def get_date():
 
 @pytest.fixture
 def get_dates(get_date):
+    """
+    fixture for getting second date
+    :param: get_date
+    :return: date or None
+    """
     try :
         date = Date(12, 4, 2014)
         return [get_date,date]
@@ -23,12 +32,21 @@ def get_dates(get_date):
 # the test is made to meet the conditions, in this case
 # this function will be checked by the first fixture
 def test_init(get_date):
+    """
+    Init Testing
+    :param get_date:
+    :return:
+    """
     try:
         assert get_date
     except:
         logging.warning("Something wrong at load data")
 
 def test_str():
+    """
+    Print testing
+    :return:
+    """
     try:
         print(Date(28, 2, 2014))
     except:
@@ -36,6 +54,11 @@ def test_str():
         assert None
 
 def test_eq(get_dates):
+    """
+    Test for check if dates is equal
+    :param get_dates:
+    :return: assert
+    """
     dates = get_dates
     if dates[0]==dates[1] :
         assert dates[0] == dates[1]
@@ -44,6 +67,11 @@ def test_eq(get_dates):
         assert dates[0]==dates[1]
 
 def test_gt(get_dates):
+    """
+    Test for check if date1 bigger from date2
+    :param get_dates:
+    :return: assert
+    """
     dates = get_dates
     if dates[0] > dates[1]:
         assert dates[0] > dates[1]
@@ -52,6 +80,11 @@ def test_gt(get_dates):
         assert dates[0] > dates[1]
 
 def test_lt(get_dates):
+    """
+    Test for check if date1 smaller from date 2
+    :param get_dates:
+    :return: assert
+    """
     dates = get_dates
     if dates[0] < dates[1]:
         assert dates[0] < dates[1]
@@ -60,7 +93,11 @@ def test_lt(get_dates):
         assert dates[0] < dates[1]
 
 def test_le(get_dates):
-
+    """
+    Test for check if date1 smaller or equal to date2
+    :param get_dates:
+    :return: assert
+    """
     dates = get_dates
     if dates[0] <= dates[1]:
         assert dates[0] <= dates[1]
@@ -69,6 +106,11 @@ def test_le(get_dates):
         assert dates[0] <= dates[1]
 
 def test_ge(get_dates):
+    """
+    Test for check if date1 bigger or equal to date2
+    :param get_dates:
+    :return: assert
+    """
     dates = get_dates
     if dates[0] >= dates[1]:
         assert dates[0] >= dates[1]
@@ -77,6 +119,11 @@ def test_ge(get_dates):
         assert dates[0] >= dates[1]
 
 def test_ne(get_dates):
+    """
+    Test for check if date1 not equal to date2
+    :param get_dates:
+    :return: assert
+    """
     dates = get_dates
     if dates[0] != dates[1]:
         assert dates[0] != dates[1]
@@ -85,6 +132,11 @@ def test_ne(get_dates):
         assert dates[0] != dates[1]
 
 def test_sub(get_dates):
+    """
+    Test date1 - date2
+    :param get_dates:
+    :return: assert
+    """
     dates = get_dates
     if isinstance(dates[0]-dates[1],int):
         assert isinstance(dates[0]-dates[1],int)
@@ -95,13 +147,23 @@ def test_sub(get_dates):
 # the test is made to meet the conditions, in this case
 # this function will be checked by the first fixture
 def isValid(get_dates):
+    """
+    Test for check isValid function
+    :param get_dates:
+    :return: assert
+    """
     try:
         assert get_dates
     except:
-        logger.info("The correctness of the date is checked at the start of tests")
+        logging.info("The correctness of the date is checked at the start of tests")
         assert get_dates
 
 def test_get_next_day(get_date):
+    """
+    Test for check if get_next_day function  work
+    :param get_date:
+    :return: assert
+    """
     d = get_date.getNextDay()
     if d>get_date:
         assert d>get_date
@@ -109,6 +171,11 @@ def test_get_next_day(get_date):
         logging.error("Check if date is correct")
 
 def test_get_next_days(get_date):
+    """
+    Test for check if get_next_days function  work
+    :param get_date:
+    :return: assert
+    """
     d = get_date.getNextDay()
     if d > get_date:
         assert d > get_date

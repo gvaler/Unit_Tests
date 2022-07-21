@@ -13,6 +13,11 @@ def data_set():
     return data_set
 
 def test_split_male_female(data_set):
+    """
+    Test for split male female function
+    :param data_set:
+    :return: assert
+    """
     data_set_m, data_set_f = split_male_female(data_set)
     if len(data_set_m)+len(data_set_f) == len(data_set):
         assert len(data_set_m)+len(data_set_f) == len(data_set)
@@ -21,6 +26,11 @@ def test_split_male_female(data_set):
         assert len(data_set_m) + len(data_set_f) == len(data_set)
 
 def test_median_avg(data_set):
+    """
+    Test for find median/avg function
+    :param data_set:
+    :return: assert
+    """
     avg = 121/4
     median = statistics.median([2,22,32,65])
     a,m = find_median_average(data_set)
@@ -29,6 +39,11 @@ def test_median_avg(data_set):
         assert find_median_average(data_set)
 
 def test_print(data_set):
+    """
+    Test for print function
+    :param data_set:
+    :return: assert
+    """
     try:
         print_values_above(data_set,20)
     except:
