@@ -5,6 +5,10 @@ import logging
 
 @pytest.fixture
 def data_set():
+    """
+    Fixture for getting dictionary
+    :return:data_set : dictionary
+    """
     data_set = {1: {"name": "Tal", "sex": "male", "age": 22},
                 2: {"height": 1.77, "sex": "male", "age": 65, "name": "Oren"},
                 3: {"height": 0.77, "sex": "male", "age": 2, "name": "Igor"},
